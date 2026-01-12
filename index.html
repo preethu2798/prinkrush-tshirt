@@ -1,283 +1,85 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <base target="_top">
-  <meta name="color-scheme" content="light">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <style>
-/* ===============================
-   GLOBAL MOBILE LOCK (FIRST)
-================================ */
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+
+<style>
 html, body {
+  margin: 0;
   -webkit-text-size-adjust: 100%;
-  text-size-adjust: 100%;
-  zoom: 1;
 }
 
-/* STOP browser dark-mode auto styling */
-:root {
-  color-scheme: light;
-}
-
-/* ===============================
-   BASE LAYOUT
-================================ */
+/* ===== BASE LAYOUT ===== */
 body {
   background: #f2f2f2;
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 100vh;
+  align-items: flex-start;
 }
 
+/* ===== TSHIRT ===== */
 .tshirt-wrap {
   position: relative;
   width: 550px;
-  margin: 0 auto;
+  max-width: 100%;
+  margin: 12px auto;
 }
 
 .tshirt {
   width: 100%;
-  height: auto;
   display: block;
-  margin: 0 auto;
 }
 
-/* ===============================
-   PRINT AREA (CRITICAL)
-================================ */
+/* ===== PRINT AREA ===== */
 .print-area {
   position: absolute;
   top: 95px;
   left: 50%;
   transform: translateX(-50%);
-
   width: 70%;
-  max-width: 70%;
-
   text-align: center;
-  font-weight: 600;
   font-size: 18px;
-  line-height: 1.2;
-
-  box-sizing: border-box;
-  white-space: normal;
-  word-break: normal;
-
-  -webkit-text-size-adjust: 100%;
-  text-size-adjust: 100%;
 }
 
-/* ===============================
-   HEADINGS & TEXT
-================================ */
-.icon {
-  text-align: center;
-  font-size: 23px;
-  color: #111;
-}
+/* ===== MOBILE FIX ===== */
+@media (max-width: 768px) {
+  body {
+    display: block;          /* 🔥 unlock mobile */
+    padding-top: 12px;
+  }
 
-h2 {
-  text-align: center;
-  font-size: 25px;
-  margin: 6px 0;
-  letter-spacing: 1px;
-  color: #111;
-}
+  .tshirt-wrap {
+    width: 100%;
+  }
 
-.sub {
-  text-align: center;
-  font-size: 14px;
-  margin-bottom: 16px;
-  color: #555;
-}
-
-/* ===============================
-   NOTICE BOX
-================================ */
-.notice {
-  background-color: #f8fafc !important;
-  border: 1px dashed #c2c7cc !important;
-  border-radius: 12px;
-  padding: 10px 12px;
-  font-size: 14px;
-  line-height: 1;
-  margin: 8px auto;
-  color: #111 !important;
-
-  width: 300px;
-  max-width: 90%;
-
-  forced-color-adjust: none;
-  -webkit-text-fill-color: #111;
-}
-
-.notice b {
-  color: #111 !important;
-}
-
-/* ===============================
-   DETAILS
-================================ */
-.details,
-.details p,
-.details span {
-  color: #111 !important;
-  background: transparent !important;
-  forced-color-adjust: none;
-}
-
-/* ===============================
-   EXPIRY
-================================ */
-.expiry {
-  margin: 15px auto;
-  padding: 10px;
-  border-radius: 10px;
-  font-size: 13px;
-  font-weight: 700;
-  text-align: center;
-
-  width: 250px;
-  max-width: 90%;
-
-  forced-color-adjust: none;
-  -webkit-text-fill-color: inherit;
-}
-
-.expiry.safe {
-  background-color: #eef2f6 !important;
-  color: #333 !important;
-}
-
-.expiry.warn {
-  background-color: #fff3cd !important;
-  color: #7a5a00 !important;
-}
-
-.expiry.danger {
-  background-color: #fde2e2 !important;
-  color: #8a1c1c !important;
-}
-
-/* ===============================
-   CONFIRM CHECKBOX
-================================ */
-.confirm-box {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  font-size: 13px;
-  margin: 10px 0;
-
-  color: #1e1e1e;
-  forced-color-adjust: none;
-  -webkit-text-fill-color: #1e1e1e;
-}
-
-.confirm-box label {
-  cursor: pointer;
-  color: inherit;
-}
-
-/* ===============================
-   BUTTONS
-================================ */
-button {
-  padding: 10px;
-  border-radius: 30px;
-  font-size: 15px;
-  font-weight: 600;
-  border: none;
-  cursor: pointer;
-  display: block;
-  margin: 0 auto;
-
-  forced-color-adjust: none;
-  -webkit-text-fill-color: inherit;
-}
-
-.confirm {
-  width: 260px;
-  max-width: 90%;
-  background: #1f2933;
-  color: #fff;
-  opacity: 0.45;
-}
-
-.confirm.enabled {
-  opacity: 1;
-}
-
-.confirm.loading {
-  pointer-events: none;
-  opacity: 1;
-}
-
-.cancel {
-  width: 200px;
-  max-width: 90%;
-  margin-top: 10px;
-  background: transparent;
-  border: 1px solid #ccc;
-  color: #555;
-}
-
-button:disabled {
-  cursor: not-allowed;
-  opacity: 0.35;
-}
-
-/* ===============================
-   BRAND
-================================ */
-.brand {
-  text-align: center;
-  margin-top: 15px;
-  forced-color-adjust: none;
-}
-
-.brand-name {
-  font-size: 17px;
-  font-weight: 700;
-  letter-spacing: 5px;
-  font-family: 'Audiowide','Trebuchet MS','Arial Black',Arial,sans-serif;
-  color: #000 !important;
-  -webkit-text-fill-color: #000;
-}
-
-.brand-line {
-  width: 150px;
-  height: 1px;
-  background-color: #666 !important;
-  margin: 4px auto;
-}
-
-.brand-tagline {
-  font-size: 8px;
-  letter-spacing: 0.5px;
-  font-weight: 600;
-  color: #666 !important;
-  -webkit-text-fill-color: #666;
-}
-
-/* ===============================
-   FINAL SAFETY LOCK (LAST)
-================================ */
-* {
-  -webkit-text-size-adjust: 100%;
-  text-size-adjust: 100%;
+  .print-area {
+    top: 90px;
+    width: 80%;
+    font-size: 16px;
+  }
 }
 </style>
-
 </head>
 
 <body>
+
 <div class="tshirt-wrap">
   <svg viewBox="0 0 520 660" class="tshirt" xmlns="http://www.w3.org/2000/svg">
-    
-        <!-- SHADOW -->
+
+    <!-- T-SHIRT BODY -->
+    <path d="M85 55 C65 55 55 65 50 80 C35 120 10 150 10 175
+      C10 205 40 235 65 255 C80 270 80 285 80 305
+      L80 595 C80 625 105 640 135 640
+      L385 640 C415 640 440 625 440 595
+      L440 305 C440 285 440 270 455 255
+      C480 235 510 205 510 175
+      C510 150 485 120 470 80
+      C465 65 455 55 435 55
+      L315 55 C285 105 235 105 205 55 Z"
+      fill="#ffffff"/>
+
+    <!-- SHADOW -->
     <path
       d="
         M85 55
@@ -301,29 +103,6 @@ button:disabled {
       transform="translate(0,8)"
     />
 
-    <!-- T-SHIRT BODY -->
-    <path
-      d="
-        M85 55
-        C65 55 55 65 50 80
-        C35 120 10 150 10 175
-        C10 205 40 235 65 255
-        C80 270 80 285 80 305
-        L80 595
-        C80 625 105 640 135 640
-        L385 640
-        C415 640 440 625 440 595
-        L440 305
-        C440 285 440 270 455 255
-        C480 235 510 205 510 175
-        C510 150 485 120 470 80
-        C465 65 455 55 435 55
-        L315 55
-        C285 105 235 105 205 55
-        Z"
-      fill="#ffffff"
-    />
-
     <!-- COLLAR STITCH -->
     <path
       d="
@@ -333,294 +112,14 @@ button:disabled {
       stroke="#dcdcdc"
       stroke-width="3"
     />
-
   </svg>
-  
+
   <div class="print-area">
-    <div class="icon">🎀</div>
-  <h2>Confirm Scratch Reward</h2>
-  <div class="sub">Please review carefully before proceeding</div>
-
-  <div class="notice">
-    <b>Shopping now?</b> Click <b>Confirm</b> to redeem.<br><br>
-    <b>Not shopping?</b> Keep this code safe and use it later.<br><br>
-    ⚠️ <b>This action is one-time only.</b>
-  </div>
-    
-    <div class="details">
-  <table style="width:80%; border-collapse: collapse; font-size:14px; margin: 0 auto;">
-    <tbody>
-      <tr>
-        <td style="padding:6px 8px; font-weight:600; width:25%;">Name:</td>
-        <td style="padding:6px 8px;"><?= name ?></td>
-      </tr>
-      <tr style="background:#f8f8f8;">
-        <td style="padding:6px 8px; font-weight:600;">Email:</td>
-        <td style="padding:6px 8px;"><?= email ?></td>
-      </tr>
-      <tr>
-        <td style="padding:6px 8px; font-weight:600;">Gift:</td>
-        <td style="padding:6px 8px;"><?= gift ?></td>
-      </tr>
-      <tr style="background:#f8f8f8;">
-        <td style="padding:6px 8px; font-weight:600;">Code:</td>
-        <td style="padding:6px 8px;"><?= code ?></td>
-      </tr>
-    </tbody>
-  </table>
-      </div>
-      <div id="expiryBox" class="expiry safe" style="text-align:center;">
-            ⏳ Reward expires on: <?= expiry ?>
-          </div>
-    
-    <div class="confirm-box">
-    <input type="checkbox" id="agree" onchange="toggleConfirm()">
-    <label for="agree">
-      I understand this reward can be redeemed only once.
-    </label>
-  </div>
-    
-    <button id="confirmBtn" class="confirm" disabled onclick="confirmNow()">
-    Confirm Redemption
-  </button>
-
-  <button class="cancel" onclick="cancelNow()">Redeem Later</button>
-    
-    <div class="brand">
-  <div class="brand-name">PRINKRUSH</div>
-  <div class="brand-line"></div>
-  <div class="brand-tagline">
-    E L E G A N C E &nbsp; I N &nbsp; M O T I O N
+    🎀
+    <h2>Confirm Scratch Reward</h2>
+    <p>Please review carefully</p>
   </div>
 </div>
 
- <script>
-  const expiryStr = "<?= expiry ?>";
-  const expiryBox = document.getElementById("expiryBox");
-  const confirmBtn = document.getElementById("confirmBtn");
-
-  function toggleConfirm() {
-    const chk = document.getElementById("agree");
-    confirmBtn.disabled = !chk.checked || confirmBtn.dataset.expired === "true";
-    confirmBtn.classList.toggle("enabled", chk.checked);
-  }
-
-  // ---- Expiry Logic ----
-  (function () {
-    const exp = new Date(expiryStr);
-    if (isNaN(exp)) return;
-
-    const today = new Date();
-    today.setHours(0,0,0,0);
-    exp.setHours(0,0,0,0);
-
-    const diff = Math.ceil((exp - today) / 86400000);
-
-    if (diff < 0) {
-      expiryBox.className = "expiry danger";
-      expiryBox.innerHTML = "❌ Reward expired";
-      confirmBtn.disabled = true;
-      confirmBtn.dataset.expired = "true";
-    } else if (diff === 0) {
-      expiryBox.className = "expiry danger";
-      expiryBox.innerHTML = "🔴 Expires today";
-    } else if (diff <= 3) {
-      expiryBox.className = "expiry warn";
-      expiryBox.innerHTML = "🔶 Expires in " + diff + " day(s)";
-    }
-  })();
-
-function confirmNow() {
-  confirmBtn.disabled = true;
-  confirmBtn.innerText = "Processing…";
-
-  google.script.run.withSuccessHandler(() => {
-    document.body.innerHTML = `
-       <body style="margin:0;background:#f0f0f0;font-family:Arial;">
-  <div style="
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:flex-start;
-  ">
-    <div style="position:relative;margin-top:200px;">
-
-        <!-- Nail -->
-        <div style="
-          position:absolute;
-          top:-80px;
-          left:50%;
-          transform:translateX(-50%);
-          width:14px;
-          height:14px;
-          background:#555;
-          border-radius:50%;
-          box-shadow:0 2px 4px rgba(0,0,0,0.3);
-          z-index:30;
-        "></div>
-
-        <!-- Left Rope -->
-        <div style="
-          position:absolute;
-          top:-76px;
-          left:0%;
-          width:50%;
-          height:4px;
-          background:repeating-linear-gradient(
-            to right,
-            #aaa,
-            #aaa 4px,
-            #777 4px,
-            #777 8px
-          );
-          transform:rotate(-20deg);
-          transform-origin:top right;
-          z-index:20
-        "></div>
-
-        <!-- Right Rope -->
-        <div style="
-          position:absolute;
-          top:-76px;
-          left:50%;
-          width:50%;
-          height:4px;
-          background:repeating-linear-gradient(
-            to right,
-            #aaa,
-            #aaa 4px,
-            #777 4px,
-            #777 8px
-          );
-          transform:rotate(20deg);
-          transform-origin:top left;
-          z-index:20
-        "></div>
-
-       <!-- Board (BOTTOM) -->
-    <div style="
-      background:#455a64;
-      width:90vw;
-      max-width:400px;
-      padding:24px 18px;
-      border:12px solid #8b5e3c;
-      border-radius:8px;
-      box-shadow:0 8px 16px rgba(0,0,0,0.2);
-      text-align:center;
-      color:#fff;
-      position:relative;
-      z-index:30;
-    ">
-          <h2 style="margin:0 0 10px; color:#ffffff;">✅ Request Submitted</h2>
-          <p style="margin:0;font-size:16px;">
-            Your redemption request has been sent for approval.
-          </p>
-        </div>
-      </div>
-  </div>
 </body>
-    `;
-  }).submitRedemption({
-    name: "<?= name ?>",
-    email: "<?= email ?>",
-    gift: "<?= gift ?>",
-    code: "<?= code ?>",
-    expiry: "<?= expiry ?>"
-  });
-}
-
-function cancelNow() {
-  document.body.innerHTML = `
-      <body style="margin:0;background:#f0f0f0;font-family:Arial;">
-  <div style="
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:flex-start;
-  ">
-    <div style="position:relative;margin-top:200px;">
-
-        <!-- Nail -->
-        <div style="
-          position:absolute;
-          top:-80px;
-          left:50%;
-          transform:translateX(-50%);
-          width:14px;
-          height:14px;
-          background:#555;
-          border-radius:50%;
-          box-shadow:0 2px 4px rgba(0,0,0,0.3);
-          z-index:30;
-        "></div>
-
-        <!-- Left Rope -->
-        <div style="
-          position:absolute;
-          top:-76px;
-          left:0%;
-          width:50%;
-          height:4px;
-          background:repeating-linear-gradient(
-            to right,
-            #aaa,
-            #aaa 4px,
-            #777 4px,
-            #777 8px
-          );
-          transform:rotate(-20deg);
-          transform-origin:top right;
-          z-index:20
-        "></div>
-
-        <!-- Right Rope -->
-        <div style="
-          position:absolute;
-          top:-76px;
-          left:50%;
-          width:50%;
-          height:4px;
-          background:repeating-linear-gradient(
-            to right,
-            #aaa,
-            #aaa 4px,
-            #777 4px,
-            #777 8px
-          );
-          transform:rotate(20deg);
-          transform-origin:top left;
-          z-index:20
-        "></div>
-
-       <!-- Board (BOTTOM) -->
-    <div style="
-      background:#455a64;
-      width:90vw;
-      max-width:400px;
-      padding:24px 18px;
-      border:12px solid #8b5e3c;
-      border-radius:8px;
-      box-shadow:0 8px 16px rgba(0,0,0,0.2);
-      text-align:center;
-      color:#fff;
-      position:relative;
-      z-index:30;
-    ">
-          <h3 style="margin:0 0 10px;color:#fff;">
-            🔒 Not Redeemed
-          </h3>
-          <p style="margin:0;font-size:15px;color:#fff;">
-            You can use this reward later before expiry.
-          </p>
-        </div>
-
- </div>
-  </div>
-</body>
-  `;
-}
-</script>
-
-  </body>
 </html>
-
