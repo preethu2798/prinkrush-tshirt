@@ -1,1 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
 
+<style>
+html, body {
+  margin: 0;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* ===== BASE LAYOUT ===== */
+body {
+  background: #f2f2f2;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* ===== TSHIRT ===== */
+.tshirt-wrap {
+  position: relative;
+  width: 550px;
+  max-width: 100%;
+  margin: 12px auto;
+}
+
+.tshirt {
+  width: 100%;
+  display: block;
+}
+
+/* ===== PRINT AREA ===== */
+.print-area {
+  position: absolute;
+  top: 95px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  text-align: center;
+  font-size: 18px;
+}
+
+/* ===== MOBILE FIX ===== */
+@media (max-width: 768px) {
+  body {
+    display: block;          /* 🔥 unlock mobile */
+    padding-top: 12px;
+  }
+
+  .tshirt-wrap {
+    width: 100%;
+  }
+
+  .print-area {
+    top: 90px;
+    width: 80%;
+    font-size: 16px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="tshirt-wrap">
+  <svg viewBox="0 0 520 660" class="tshirt" xmlns="http://www.w3.org/2000/svg">
+
+    <path d="M85 55 C65 55 55 65 50 80 C35 120 10 150 10 175
+      C10 205 40 235 65 255 C80 270 80 285 80 305
+      L80 595 C80 625 105 640 135 640
+      L385 640 C415 640 440 625 440 595
+      L440 305 C440 285 440 270 455 255
+      C480 235 510 205 510 175
+      C510 150 485 120 470 80
+      C465 65 455 55 435 55
+      L315 55 C285 105 235 105 205 55 Z"
+      fill="#ffffff"/>
+
+  </svg>
+
+  <div class="print-area">
+    🎀
+    <h2>Confirm Scratch Reward</h2>
+    <p>Please review carefully</p>
+  </div>
+</div>
+
+</body>
+</html>
